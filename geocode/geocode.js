@@ -16,9 +16,9 @@ var geocodeAddress = (address, callback) => {
     Error: if url doesnt exist, no internet connection
   */(error, response, body) => { //Callback when http request returns
     if (error){ //System errors eg no connection
-      callback("unable to connect to the Google servers.", undefined);
+      callback("unable to connect to the Google servers.");
     } else if (body.status === "ZERO_RESULTS") { //If address aint found
-      callback("Address couldn't be found, did you type in correctly?", undefined); //Here we don't have to specify results cause errorMessage is specified first so it knows it's that
+      callback("Address couldn't be found, did you type in correctly?"); //Here we don't have to specify results cause errorMessage is specified first so it knows it's that
     } else if (body.status === "OK") {
       callback(undefined, { //We use undefined cause callback returns both errorMessage and result and errorMessage is the first parameter therefore we must return undefined ourselves
         address: body.results[0].formatted_address,
