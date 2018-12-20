@@ -55,7 +55,8 @@ app.post("/", (req, res) => {
     }
   });
 })
- 
-app.listen(port, () => {
-  console.log(`Listening to ${port}`);
+
+var server = app.listen(process.env.PORT || 5000, () => {
+  var port = server.address().port;
+  console.log("Express is working on port " + port);
 });
